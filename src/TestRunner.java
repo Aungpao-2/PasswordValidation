@@ -26,14 +26,24 @@ public class TestRunner {
         check("null -> throws IllegalArgumentException", threw);
 
         // TODO: R2 - boundary ความยาว (เช่น 7, 8, 20, 21)
+        check("ความยาว 7  ", PasswordValidator.validate("Kungof2") == false);
+        check("ความยาว 8  ", PasswordValidator.validate("Kungof12") == true);
+        check("ความยาว 20 ", PasswordValidator.validate("Kungofjhij1234op6gvM") == true);
+        check("ความยาว 21 ", PasswordValidator.validate("Kungofghij123456789Za") == false);
 
         // TODO: R3 - ไม่มีตัวพิมพ์ใหญ่ -> false
+        check("ไม่มีตัวพิมพ์ใหญ่ ", PasswordValidator.validate("KFINGK47") == false);
 
         // TODO: R4 - ไม่มีตัวพิมพ์เล็ก -> false
+        check("ไม่มีตัวพิมพ์เล็ก ", PasswordValidator.validate("abdkchi8") == false);
 
         // TODO: R5 - ไม่มีตัวเลข -> false
+        check("ไม่มีตัวเลข ", PasswordValidator.validate("58796058") == false);
 
         // TODO: R6 - มีช่องว่าง -> false
+        check("มีช่องว่างตรงกลาง ", PasswordValidator.validate("Abcd ") == false);
+        check("มีช่องว่างข้างหน้า ", PasswordValidator.validate(" Abcdef") == false);
+        check("มีช่องว่างข้างหลัง ", PasswordValidator.validate("Abcdef ") == false);
 
         // TODO: boundary อื่นๆ ที่คุณคิดว่าจำเป็น
 
